@@ -14,7 +14,9 @@ class BallPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ask Me Anything'),
+        title: Center(
+          child: Text('Ask Me Anything'),
+        ),
         backgroundColor: Colors.blue.shade900,
       ),
       backgroundColor: Colors.blue,
@@ -31,19 +33,22 @@ class Ball extends StatefulWidget {
 }
 
 class _BallState extends State<Ball> {
-
   int ballNumber = 1;
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: TextButton(
-        onPressed: () {
-          ballNumber = Random().nextInt(4) + 1;
-          print(ballNumber);
-        },
-        child: Image(
-          image: AssetImage('images/ball$ballNumber.png'),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: TextButton(
+          onPressed: () {
+            setState(() {
+              ballNumber = Random().nextInt(5) + 1;
+            });
+          },
+          child: Image(
+            image: AssetImage('images/ball$ballNumber.png'),
+          ),
         ),
       ),
     );
