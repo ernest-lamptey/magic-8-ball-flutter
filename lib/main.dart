@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() => runApp(
       const MaterialApp(
@@ -30,15 +31,19 @@ class Ball extends StatefulWidget {
 }
 
 class _BallState extends State<Ball> {
+
+  int ballNumber = 1;
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: TextButton(
         onPressed: () {
-          print('I got clicked');
+          ballNumber = Random().nextInt(4) + 1;
+          print(ballNumber);
         },
         child: Image(
-          image: AssetImage('images/ball1.png'),
+          image: AssetImage('images/ball$ballNumber.png'),
         ),
       ),
     );
